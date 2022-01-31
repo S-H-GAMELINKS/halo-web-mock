@@ -6,4 +6,8 @@ Thin::Server.start('0.0.0.0', 3000) do
   map '/test' do
     run HelloController::Index.new
   end
+
+  map '/assets' do
+    run Rack::File.new('./assets/css')
+  end
 end

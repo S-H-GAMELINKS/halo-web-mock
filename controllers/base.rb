@@ -16,6 +16,10 @@ class HALO
         @layout = ERB.new(File.read("./views/#{path}.erb"))
       end
 
+      def include_stylesheet(path)
+        "<link rel='stylesheet' href='/assets/#{path}.css'>"
+      end
+
       def render_with_layouts
         @layout.result(binding)
       end
