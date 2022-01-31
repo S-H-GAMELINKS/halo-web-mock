@@ -17,7 +17,7 @@ class HALO
       end
 
       def include_stylesheet(path)
-        "<link rel='stylesheet' href='/assets/#{path}.css'>"
+        "<link rel='stylesheet' href='/assets/css/#{path}.css'>"
       end
 
       def include_javascript(path)

@@ -8,6 +8,6 @@ Thin::Server.start('0.0.0.0', 3000) do
   end
 
   map '/assets' do
-    run Rack::File.new('./assets/css')
+    run Rack::File.new('./assets')
   end
 end
