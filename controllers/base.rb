@@ -3,19 +3,24 @@ require "erb"
 class HALO
   class Action
     class Base
-      attr_accessor :controller_name, :action_name, :body
+      attr_accessor :controller_name, :action_name, :layout, :body
 
       def initialize
         @controller_name = get_controller_name()
         @action_name = get_action_name()
+        @layout = get_layout_template()
         @body = get_action_template()
+      end
+
+      def render_with_layouts
+        @layout.result(binding)
       end
 
       def render(status: 200, content_type: "text/html")
         [
         status,
         { 'Content-Type' => content_type },
-        [@body.result(binding)]
+        [render_with_layouts{@body.result(binding)}]
         ]
       end
 
@@ -27,6 +32,10 @@ class HALO
 
       def get_action_name
         self.class.name.sub(/.+::/, '').downcase
+      end
+
+      def get_layout_template
+        ERB.new(File.read("./views/layouts/app.erb"))
       end
 
       def get_action_template
