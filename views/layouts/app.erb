@@ -2,6 +2,10 @@
     <head>
         <%= include_stylesheet 'app' %>
         <%= include_javascript 'index' %>
+
+        <script type="module">
+            import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';
+        </script>
     </head>
     <body>
         <%= yield %>
