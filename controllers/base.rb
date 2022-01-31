@@ -3,19 +3,19 @@ require "erb"
 class HALO
   class Action
     class Base
-      attr_accessor :controller_name, :action_name
+      attr_accessor :controller_name, :action_name, :body
 
       def initialize
         @controller_name = get_controller_name()
         @action_name = get_action_name()
+        @body = get_action_template()
       end
 
       def render(status: 200, content_type: "text/html")
-        body = get_action_template()
         [
         status,
         { 'Content-Type' => content_type },
-        [body.result(binding)]
+        [@body.result(binding)]
         ]
       end
 
