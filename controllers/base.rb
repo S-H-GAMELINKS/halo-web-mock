@@ -20,6 +20,10 @@ class HALO
         "<link rel='stylesheet' href='/assets/#{path}.css'>"
       end
 
+      def include_javascript(path)
+        "<script type='text/javascript' src='/assets/js/#{path}.js'></script>"
+      end
+
       def render_with_layouts
         @layout.result(binding)
       end
