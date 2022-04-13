@@ -1,5 +1,4 @@
-require "thin"
-require "./controllers/entry"
+require './config/autoload'
 
 Thin::Server.start('0.0.0.0', 3000) do
   use Rack::CommonLogger
