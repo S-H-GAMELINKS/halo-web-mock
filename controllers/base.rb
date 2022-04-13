@@ -12,7 +12,7 @@ class HALO
         @body = get_action_template()
       end
 
-      def set_layouts(path)
+      def self.set_layouts(path)
         @layout = ERB.new(File.read("./views/#{path}.erb"))
       end
 
